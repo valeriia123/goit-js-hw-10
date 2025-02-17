@@ -13,7 +13,6 @@ inputEl.style.height = '20px';
 
 const createPromise = (delay, state) => {
    return new Promise((resolve, reject) => {
-  
        setTimeout(() => {
             if (state === 'fulfilled') {
                 resolve(delay);
@@ -24,30 +23,26 @@ const createPromise = (delay, state) => {
         }, delay)
     })
 }
-createPromise();
+// createPromise();
 
 
 
-btnEl.addEventListener('click', event => {
+formEl.addEventListener('submit', event => {
     event.preventDefault();
-    const delay = Number(formEl.delay.value);
-    const state = formEl.state.value;
+    const delay = Number(formEl.elements.delay.value || 0);
+    const state = formEl.elements.state.value || 'fulfilled';
 
     createPromise(delay, state)
         .then(delay => {
-
             iziToast.success({
                 message: `✅ Fulfilled promise in ${delay}ms`
-            })
-
+            });
             console.log(`✅ Fulfilled promise in ${delay}ms`)
         })
         .catch(delay => {
-            
             iziToast.error({
                 message: `❌ Rejected promise in ${delay}ms`
             })
-
             console.log(`❌ Rejected promise in ${delay}ms`);
         })
 })

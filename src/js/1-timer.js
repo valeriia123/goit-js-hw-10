@@ -28,7 +28,7 @@ const options = {
       }
     }
 };
-  
+buttonStart.disabled = true;
   flatpickr(inputEl, options);
 
   function convertMs(ms) {
@@ -85,7 +85,10 @@ let userSelectedDate = {
 
     start() {
         if (!this.deadline) {
-            alert('Please, choose a date!');
+            iziToast.error({
+                title: 'Error',
+                message: 'Please choose a date in the future'
+            });
             return;
         }
 
