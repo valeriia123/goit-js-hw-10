@@ -3,6 +3,10 @@ import flatpickr from "flatpickr";
 // Додатковий імпорт стилів
 import "flatpickr/dist/flatpickr.min.css";
 
+flatpickr("#datetime-picker", {
+    dateFormat: "d.m.Y - H:i",
+});
+
 // Описаний у документації
 import iziToast from "izitoast";
 // Додатковий імпорт стилів
